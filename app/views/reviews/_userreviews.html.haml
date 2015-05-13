@@ -1,0 +1,9 @@
+.row.p-v-10.text-center.bordered-bot-thick.fixed-break
+  .col-md-6.text-left
+    = review.content
+  .col-md-2
+    = review.rating
+  .col-md-2
+    = link_to review.product.title, category_product_path(review.product.category, review.product)
+  .col-md-2
+    = review.created_at.strftime("%d/%m/%y")

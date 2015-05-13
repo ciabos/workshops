@@ -1,19 +1,23 @@
 %h1 Listing categories
-
-%table.table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - categories.each do |category|
-    %tr
-      %td= category.name
-      %td= link_to 'Show', category
-      %td= link_to 'Edit', edit_category_path(category)
-      %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
+.container.p-b-10.bordered-bot
+  .col-md-4
+    \ Category name
+  .col-md-2.text-center
+    \ Products in category
+  .col-md-6.text-right
+    \ Actions
+- categories.each do |category|
+  .container.bordered-bot-thick
+    .col-md-4
+      .m-t-18= category.name
+    .col-md-2.text-center
+      .m-t-18= category.products.count
+    .col-md-6.text-right
+      = link_to 'Show', category, class: 'btn btn-success'
+      - if current_user && current_user.admin?
+        = link_to 'Edit', edit_category_path(category), class: 'btn btn-info'
+        = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning'
 
 %br
-
-= link_to 'New Category', new_category_path
+- if current_user && current_user.admin?
+  = link_to 'New Category', new_category_path, class: 'btn btn-primary'

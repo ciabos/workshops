@@ -1,4 +1,15 @@
-%p= review.content
-%p
-  %b= review.rating
-  %em= review.author
+.bordered-bot-thick.p-t-10.smaller-font
+  %p
+    \ Content:
+    = review.content
+  %p
+    \ Rating:
+    = review.rating
+    \ / 5
+    .progress.progress-striped
+      .progress-bar.progress-bar-info{:style => "width: #{(review.rating*100)/5}%;"}
+  %p
+    \ by: 
+    %em= review.author
+    \  on: 
+    = review.created_at.strftime("%d/%m/%y")

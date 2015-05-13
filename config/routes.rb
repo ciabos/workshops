@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
+
+  root 'categories#index'
+  get '/profile' => 'profile#show'
   resources :categories do
     resources :products do
       resources :reviews
     end
   end
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-
-  root 'categories#index'
-
 end

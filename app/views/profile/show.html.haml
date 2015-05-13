@@ -1,0 +1,37 @@
+/ h1 Profile#show
+/ p Find me in app/views/profile/show.html.slim
+
+%div.pull-left= user.gravatar
+.pull-left.m-l-40
+  %h1
+    = user.fullname
+  %h5
+    \ Email:
+    %strong= mail_to user.email
+
+  %h5
+    \ Products:
+    = user.products.count
+
+  %h5
+    \ Reviews:
+    = user.reviews.count
+
+.clearfix
+
+%h4.m-t-40
+  \ Last 5 Reviews:
+  .p-t-10.br
+  - if user.reviews.any?
+    .row.p-b-10.text-center.title-row.drk-grn-text.bordered-bot
+      .col-md-6.text-left
+        \ Content:
+      .col-md-2
+        \ Rating:
+      .col-md-2
+        \ Product:
+      .col-md-2
+        \ Created at:
+    = render partial: 'reviews/userreviews', collection: user.reviews.limit(5).order('created_at desc') , as: :review
+  - else
+    \ You didn't review any product yet.

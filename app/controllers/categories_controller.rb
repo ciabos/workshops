@@ -1,7 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
+  before_action :authenticate_user!, except: [:show, :index]
   before_action :authenticate_admin!, only: [:new, :edit, :create, :update]
-  
   expose(:categories)
   expose(:category)
   expose(:product) { Product.new }
@@ -48,7 +47,6 @@ class CategoriesController < ApplicationController
 
     def authenticate_admin!
       if current_user && !current_user.admin?
-        sign_out current_user
         redirect_to new_user_session_path, notice: "You are not allowed to do this"
       end
     end

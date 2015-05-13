@@ -1,21 +1,23 @@
-%h1 Listing products
+.row
+  .col-lg-12
+    %h1.centered Listing products
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Price
-    %th
-    %th
-    %th
+    .row.bordered-bot.p-b-10
+      .col-md-2 Title
+      .col-md-5 Description
+      .col-md-1 Category
+      .col-md-1 Price
+      .col-md-3.text-right Action
 
-  - products.each do |product|
-    %tr
-      %td= product.title
-      %td= product.description
-      %td= product.price
-      %td= link_to 'Show', category_product_path(product.category, product)
-      %td= link_to 'Edit', edit_category_product_path(product.category, product)
-      %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
+    - products.each do |product|
+      .row.bordered-bot-thick.p-v-10
+        .col-md-2= product.title
+        .col-md-5= product.description
+        .col-md-1= product.category.name
+        .col-md-1= number_to_currency(product.price)
+        .col-md-3
+          - if current_user && current_user.admin?
+            .custom-width.pull-right= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-danger btn-sm'
+            .custom-width.pull-right.p-r-5= link_to 'Edit', edit_category_product_path(product.category, product), class: 'btn-info btn-sm'
+          .custom-width.pull-right.p-r-5= link_to 'Show', category_product_path(product.category, product), class: 'btn-success btn-sm'
+    %br

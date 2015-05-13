@@ -7,13 +7,13 @@
           %li= msg
 
   .form-group
-    = f.label :title
+    = f.label :title, class: 'control-label'
     = f.text_field :title, class: 'form-control'
   .form-group
     = f.label :description
     = f.text_area :description, class: 'form-control'
   .form-group
-    = f.label :price
+    = f.label :price, class: 'control-label'
     = f.text_field :price, class: 'form-control'
 
-  = f.submit 'Save', class: 'btn btn-default'
+  = f.submit 'Add product', class: 'btn btn-primary'

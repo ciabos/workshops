@@ -34,8 +34,9 @@ describe ProductsController do
 
   context 'another user is signed in' do
     let(:user) { create(:user) }
-    let(:user2) { build(:user) }
+    let(:user2) { create(:user) }
     let(:product) { Product.create! valid_attributes }
+
 
     before do
       sign_in user2

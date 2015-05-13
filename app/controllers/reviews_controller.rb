@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-
   expose_decorated(:review)
   expose(:product)
   expose(:category) { product.category }

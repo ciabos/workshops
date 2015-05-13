@@ -1,25 +1,47 @@
-%p#notice= notice
-%p#error= flash[:error]
+.row
+  .col-md-12
+    = link_to 'Back', category_products_path, class: 'btn btn-primary'
+    - if current_user && (current_user.id == product.user_id)
+      = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-info'
+      = link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+    - if notice.present?
+      %p#notice.alert.alert-success= notice
+    - if flash[:error].present?
+      %p#error.alert.alert-warning= flash[:error]
+    %p
+      %b Average rating
+      - if product.reviews.any?
+        = product.average_rating.round(2)
+        \ / 5
+      - else
+        \ Game hasn't been rated yet
+      - if product.reviews.any?
+        .progress.progress-striped
+          .progress-bar{:style => "width: #{(product.average_rating*100)/5}%;"}
+    %p
+      %b Title:
+      = product.title
+    %p
+      %b Description:
+      = product.description
+    %p
+      %b Price:
+      = number_to_currency(product.price)
 
-%p
-  %b Title:
-  = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
+    %p
+      %b Category
+      = product.category.name
 
-%p
-  %b Category
-  = product.category.name
-
-%h3 Reviews
-= render 'reviews/form'
-
-= render reviews
-
-= link_to 'Edit', edit_category_product_path(category.id, product.id)
-\|
-= link_to 'Back', category_products_path, class: 'btn btn-primary'
+    %h3.p-t-10.bordered-top Reviews
+    = render reviews
+    - if current_user
+      %a.btn.btn-primary{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseExample"}
+        \ Add new review
+      #collapseExample.collapse
+        .well
+          .bordered-bot.bordered-top= render 'reviews/form'
+    - else 
+      = link_to 'register', new_user_registration_path, class: 'btn btn-primary'
+      \ Already have an account?
+      = link_to 'Log in', new_user_session_path, class: 'btn btn-primary'
+      \ If you want to add review
