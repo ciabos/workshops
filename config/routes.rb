@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   root 'products#index'
   get '/profile' => 'profile#show'
-  resources :categories, only: [:create, :edit, :destroy] do
-    resources :products, only: [:create, :edit, :destroy] do
-      resources :reviews, only: [:create, :edit, :destroy]
+  resources :categories do
+    resources :products do
+      resources :reviews
     end
   end
 
