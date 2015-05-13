@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
     if category.save
       redirect_to category, notice: 'Category was successfully created.'
     else
-      render action: 'new'
+      render 'new'
     end
   end
 
@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
     if category.update(category_params)
       redirect_to category, notice: 'Category was successfully updated.'
     else
-      render action: 'edit'
+      render 'edit'
     end
   end
 

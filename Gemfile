@@ -22,6 +22,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'travis'
 gem 'ffaker'
 gem 'konf'
+gem 'rails_best_practices'
 
 group :development do
   gem 'spring'

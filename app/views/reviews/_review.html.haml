@@ -9,7 +9,7 @@
     .progress.progress-striped
       .progress-bar.progress-bar-info{:style => "width: #{(review.rating*100)/5}%;"}
   %p
-    \ by: 
+    \ by:
     %em= review.author
-    \  on: 
+    \  on:
     = review.created_at.strftime("%d/%m/%y")

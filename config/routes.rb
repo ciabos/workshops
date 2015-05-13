@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'categories#index'
+  root 'products#index'
   get '/profile' => 'profile#show'
   resources :categories do
     resources :products do

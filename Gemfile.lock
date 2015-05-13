@@ -45,6 +45,8 @@ GEM
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.2)
+    code_analyzer (0.4.5)
+      sexp_processor
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -53,6 +55,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    colored (1.2)
     database_cleaner (1.3.0)
     decent_decoration (0.0.6)
       decent_exposure (>= 2.0)
@@ -149,6 +152,15 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
+    rails_best_practices (1.15.7)
+      activesupport
+      code_analyzer (>= 0.4.3)
+      colored
+      erubis
+      i18n
+      json
+      require_all
+      ruby-progressbar
     rails_serve_static_assets (0.0.4)
     rails_stdout_logging (0.0.3)
     railties (4.1.8)
@@ -159,6 +171,7 @@ GEM
     rake (10.3.2)
     ref (1.0.5)
     request_store (1.1.0)
+    require_all (1.3.2)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rspec-core (3.1.7)
@@ -177,7 +190,9 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
+    ruby-progressbar (1.7.5)
     sass (3.4.8)
+    sexp_processor (4.5.1)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
     simple_form (3.1.0.rc2)
@@ -244,6 +259,7 @@ DEPENDENCIES
   rails (= 4.1.8)
   rails-assets-bootstrap-material-design!
   rails_12factor
+  rails_best_practices
   rspec-rails
   sass-rails!
   shoulda-matchers
