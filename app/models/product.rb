@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  delegate :name, to: :category, prefix: true, allow_nil: true
   belongs_to :category
   belongs_to :user
   has_many :reviews, dependent: :destroy

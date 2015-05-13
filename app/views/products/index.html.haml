@@ -13,11 +13,11 @@
       .row.bordered-bot-thick.p-v-10
         .col-md-2= product.title
         .col-md-5= product.description
-        .col-md-1= product.category.name
+        .col-md-1= product.category_name
         .col-md-1= number_to_currency(product.price)
         .col-md-3
-          - if current_user && current_user.admin?
+          .custom-width.pull-right.p-l-5= link_to 'Show', category_product_path(product.category, product), class: 'btn-success btn-sm'
+          - if current_user && (current_user.id == product.user_id)
             .custom-width.pull-right= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-danger btn-sm'
             .custom-width.pull-right.p-r-5= link_to 'Edit', edit_category_product_path(product.category, product), class: 'btn-info btn-sm'
-          .custom-width.pull-right.p-r-5= link_to 'Show', category_product_path(product.category, product), class: 'btn-success btn-sm'
     %br
