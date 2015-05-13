@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap-material-design'
+end
 
 gem 'rails', '4.1.8'
 

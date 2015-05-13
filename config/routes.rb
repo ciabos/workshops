@@ -4,6 +4,10 @@ Rails.application.routes.draw do
       resources :reviews
     end
   end
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
 
   root 'categories#index'
+
 end

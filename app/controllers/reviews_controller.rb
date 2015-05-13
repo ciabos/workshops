@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-
+  expose(:user)
   expose(:review)
   expose(:product)
 
