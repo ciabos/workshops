@@ -1,13 +1,18 @@
 class ReviewsController < ApplicationController
-  expose(:user)
-  expose(:review)
+  before_action :authenticate_user!
+
+  expose_decorated(:review)
   expose(:product)
+  expose(:category) { product.category }
+  expose_decorated(:reviews, ancestor: :product)
 
   def edit
   end
 
   def create
+
     self.review = Review.new(review_params)
+    self.review.user_id = current_user.id
 
     if review.save
       product.reviews << review
